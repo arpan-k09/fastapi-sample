@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <h1>CSV Viewer</h1>
+        <p>Upload your CSV file and preview the data in a clean table.</p>
+      </header>
+
+      <main class="card">
+        <form
+          class="upload-form"
+          action="/upload"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label for="file">Choose a CSV file</label>
+          <input id="file" type="file" name="file" accept=".csv" required />
+          <button type="submit" class="primary">Upload File</button>
+        </form>
+
+        <form class="display-form" action="/display" method="get">
+          <button type="submit" class="secondary">Display Uploaded Data</button>
+        </form>
+
+        {% if message %}
+        <p class="message">{{ message }}</p>
+        {% endif %}
+      </main>
+    </div>
+  </body>
+</html>
